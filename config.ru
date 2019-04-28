@@ -59,7 +59,7 @@ class App < Roda
     login_button 'Login'
     login_error_flash 'Login ist fehlgeschlagen (login_error_flash).'
     login_error_status 'TODO (login_error_status).'
-    login_notice_flash 'TODO (login_notice_flash).'
+    login_notice_flash 'Login erfolgreich (login_notice_flash).'
     require_login_error_flash 'TODO (require_login_error_flash).'
 
     require_mail? false
