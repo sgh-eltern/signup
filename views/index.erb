@@ -1,0 +1,11 @@
+<h1>Willkommen</h1>
+
+<% if rodauth.logged_in? %>
+  <p>Sie sind angemeldet als <%= DB[:accounts].where(:id=>rodauth.session_value).get(:email) %>.</p>
+
+  <ul>
+    <li><a href="/account">Ihr Konto</a></li>
+  </ul>
+<% else %>
+  <p>Bitte <a href="/login">anmelden</a>.</p>
+<% end %>

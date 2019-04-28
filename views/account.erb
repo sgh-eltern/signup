@@ -1,0 +1,9 @@
+<h1>Konto</h1>
+
+<p>Was wir über Sie wissen:</p>
+
+<ul>
+  <li>
+      Ihr Benutzername ist <%= DB[:accounts].where(id: rodauth.session_value).get(:email) %>
+  </li>
+</ul>
