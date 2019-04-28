@@ -10,7 +10,6 @@ gem 'tilt'
 gem 'rack_csrf'
 gem 'bcrypt'
 gem 'sequel'
-gem 'mail'
 gem 'sqlite3'
 
 group 'development' do

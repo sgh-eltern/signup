@@ -9,19 +9,6 @@ class App < Roda
   DB.extension :date_arithmetic
   DB.freeze
 
-  ::Mail.defaults do
-    delivery_method :smtp, {
-      address: ENV.fetch('smtp_host'),
-      port: ENV.fetch('smtp_port'),
-      enable_starttls_auto: true,
-      user_name: ENV.fetch('smtp_user'),
-      password: ENV.fetch('smtp_password'),
-      authentication: ENV['smtp_authentication'],
-      domain: ENV.fetch('smtp_host'),
-      tls: !!ENV['smtp_tls'],
-    }
-  end
-
   plugin :render, :escape=>true
   plugin :request_aref, :raise
   plugin :hooks
@@ -74,6 +61,17 @@ class App < Roda
     login_error_status 'TODO (login_error_status).'
     login_notice_flash 'TODO (login_notice_flash).'
     require_login_error_flash 'TODO (require_login_error_flash).'
+
+    require_mail? false
+    send_email_auth_email do
+      mail = {
+        from: email_from,
+        to: email_to,
+        subject: email_auth_email_subject,
+        body: email_auth_email_body,
+      }
+      warn "TODO Enqueing mail: #{mail}"
+    end
   end
 
   route do |r|
